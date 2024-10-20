@@ -21,6 +21,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final GlobalKey _aboutSectionKey = GlobalKey();
+  final GlobalKey _projectsSectionKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
 
@@ -55,7 +57,10 @@ class _HomeState extends State<Home> {
                           )
                           ),
                         onPressed: () {
-                          print('Add button pressed');
+                              Scrollable.ensureVisible(
+                                _aboutSectionKey.currentContext!,
+                                duration: const Duration(milliseconds: 500),
+                              );
                         },
                       ),
                       TextButton(
@@ -67,7 +72,10 @@ class _HomeState extends State<Home> {
                           )
                           ),
                         onPressed: () {
-                          print('Add button pressed');
+                              Scrollable.ensureVisible(
+                                _projectsSectionKey.currentContext!,
+                                duration: const Duration(milliseconds: 500),
+                              );
                         },
                       ),
                     ],
@@ -233,6 +241,7 @@ class _HomeState extends State<Home> {
                       ],
                   ),
                   Column(
+                    key: _projectsSectionKey,
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -393,6 +402,7 @@ class _HomeState extends State<Home> {
                           children: [
                             SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                             Column(
+                              key: _aboutSectionKey,
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
